@@ -1,5 +1,6 @@
 package com.Krishnendu.HospitalManagement.model;
 
+import com.Krishnendu.HospitalManagement.enums.BloodGroup;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -36,6 +38,9 @@ public class Patient {
     @ToString.Exclude
     private LocalDate birthDate;
     private String email;
-    private String bloodGroup;
+    @Enumerated(EnumType.STRING)
+    private BloodGroup bloodGroup;
+    @Column(updatable = false)
+    private LocalDateTime createdAt;
 
 }
