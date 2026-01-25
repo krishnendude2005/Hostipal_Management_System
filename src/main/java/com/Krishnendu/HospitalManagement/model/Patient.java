@@ -1,9 +1,6 @@
 package com.Krishnendu.HospitalManagement.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +13,11 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Table(
+        indexes = {
+                @Index(name = "idx_patient_name", columnList = "firstname, lastname")
+        }
+)
 public class Patient {
 
     @Id
