@@ -14,9 +14,16 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @ToString
 @Table(
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        name = "patient_email_birthdate",
+                        columnNames = {"email", "birth_date"}
+                )
+        },
         indexes = {
-                @Index(name = "idx_patient_name", columnList = "firstname, lastname")
+                @Index(name = "idx_patient_name", columnList = "first_name, last_name")
         }
+
 )
 public class Patient {
 
@@ -29,5 +36,6 @@ public class Patient {
     @ToString.Exclude
     private LocalDate birthDate;
     private String email;
+    private String bloodGroup;
 
 }
