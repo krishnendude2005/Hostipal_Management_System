@@ -46,16 +46,21 @@ public class PatientTest {
     }
 
     @Test
-    public void findByBirthDateAfterDate() {
+    public void testFindByBirthDateAfterDate() {
         List<Patient> patientList = patientRepo.findByBirthdateAfterDate(LocalDate.ofEpochDay(2002- 7 -15));
         System.out.println(patientList);
     }
 
     @Test
-    public void countByBloodGroup() {
+    public void testCountByBloodGroup() {
         List<Object[]> countDetails = patientRepo.countEachBloodGroupType();
         for (Object[] row : countDetails) {
             System.out.println(row[0] + " -> " + row[1]);
         }
+    }
+
+    @Test
+    public void testFindALlPatient() {
+        System.out.println(patientRepo.findAllPatient());
     }
 }

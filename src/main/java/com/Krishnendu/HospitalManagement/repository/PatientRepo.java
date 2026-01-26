@@ -22,4 +22,7 @@ public interface PatientRepo extends JpaRepository<Patient, Long> {
 
     @Query("SELECT p.bloodGroup , count(*) from Patient p group by p.bloodGroup")
     List<Object[]> countEachBloodGroupType();
+
+    @Query(value = "select * from patient", nativeQuery = true)
+    public List<Patient> findAllPatient(); // example of using RAW sql query - table name here should be  is same as DB
 }
