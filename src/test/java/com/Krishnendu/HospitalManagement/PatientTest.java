@@ -7,6 +7,8 @@ import com.Krishnendu.HospitalManagement.repository.PatientRepo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -62,7 +64,18 @@ public class PatientTest {
 
     @Test
     public void testFindALlPatient() {
-        System.out.println(patientRepo.findAllPatient());
+//        System.out.println(patientRepo.findAllPatient(PageRequest.ofSize(2)));
+
+        int page = 0;
+        int pageSize = 2;
+
+        Page<Patient> result = null;
+
+        do {
+            result = patientRepo.findAllPatient(PageRequest.of(page, pageSize));
+            System.out.println(result.getContent());
+            page++;
+        } while (!result.isLast());
     }
 
     @Test

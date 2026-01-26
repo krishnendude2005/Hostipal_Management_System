@@ -4,6 +4,8 @@ import com.Krishnendu.HospitalManagement.dto.BloodGroupCountResponseEntity;
 import com.Krishnendu.HospitalManagement.enums.BloodGroup;
 import com.Krishnendu.HospitalManagement.model.Patient;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -29,7 +31,7 @@ public interface PatientRepo extends JpaRepository<Patient, Long> {
     List<BloodGroupCountResponseEntity> countEachBloodGroupType();
 
     @Query(value = "select * from patient", nativeQuery = true)
-     List<Patient> findAllPatient(); // example of using RAW sql query - table name here should be same as DB
+    Page<Patient> findAllPatient(Pageable pageable); // example of using RAW sql query - table name here should be same as DB
 
     @Transactional // adding this because of testing . No need in this flow => controller--->service--->repository
     @Modifying // we have to mention this here for queries which will update the DB
