@@ -1,5 +1,6 @@
 package com.Krishnendu.HospitalManagement;
 
+import com.Krishnendu.HospitalManagement.dto.BloodGroupCountResponseEntity;
 import com.Krishnendu.HospitalManagement.enums.BloodGroup;
 import com.Krishnendu.HospitalManagement.model.Patient;
 import com.Krishnendu.HospitalManagement.repository.PatientRepo;
@@ -28,14 +29,14 @@ public class PatientTest {
         patient.setFirstName("Krishnendu");
         patient.setLastName("De");
         patient.setGender("Male");
-        patient.setBirthDate(LocalDate.of(2003, 7, 15));
+        patient.setBirthDate(LocalDate.of(2002, 7, 15));
         patient.setEmail("krishnendu.de@gmail.com");
 
         patientRepo.save(patient);
     }
     @Test
     public void testFindByName() {
-        Patient patient = patientRepo.findByFirstNameOrLastName("Krishnendu", "De");
+        List<Patient> patient = patientRepo.findByFirstNameOrLastName("Krishnendu", "De");
         System.out.println(patient);
     }
 
@@ -53,9 +54,9 @@ public class PatientTest {
 
     @Test
     public void testCountByBloodGroup() {
-        List<Object[]> countDetails = patientRepo.countEachBloodGroupType();
-        for (Object[] row : countDetails) {
-            System.out.println(row[0] + " -> " + row[1]);
+        List<BloodGroupCountResponseEntity> countDetails = patientRepo.countEachBloodGroupType();
+        for (var row : countDetails) {
+            System.out.println(row.getBloodGroup() + " -> " + row.getCount());
         }
     }
 
