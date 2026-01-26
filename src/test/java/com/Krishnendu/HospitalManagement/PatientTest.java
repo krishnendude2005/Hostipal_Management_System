@@ -1,5 +1,6 @@
 package com.Krishnendu.HospitalManagement;
 
+import com.Krishnendu.HospitalManagement.enums.BloodGroup;
 import com.Krishnendu.HospitalManagement.model.Patient;
 import com.Krishnendu.HospitalManagement.repository.PatientRepo;
 import org.junit.jupiter.api.Test;
@@ -36,5 +37,11 @@ public class PatientTest {
     public void testFindByName() {
         Patient patient = patientRepo.findByFirstNameOrLastName("Krishnendu", "De");
         System.out.println(patient);
+    }
+
+    @Test
+    public void testFindByBloodGroup() {
+        List<Patient> patients = patientRepo.findByBloodGroup("Male",BloodGroup.AB_POSITIVE);
+        System.out.println(patients);
     }
 }
