@@ -32,4 +32,9 @@ public class PatientTest {
 
         patientRepo.save(patient);
     }
+    @Test
+    public void testFindByName() {
+        Patient patient = patientRepo.findByFirstNameOrLastName("Krishnendu", "De");
+        System.out.println(patient);
+    }
 }
