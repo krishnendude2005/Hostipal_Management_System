@@ -2,7 +2,9 @@ package com.Krishnendu.HospitalManagement.repository;
 
 import com.Krishnendu.HospitalManagement.enums.BloodGroup;
 import com.Krishnendu.HospitalManagement.model.Patient;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -24,5 +26,10 @@ public interface PatientRepo extends JpaRepository<Patient, Long> {
     List<Object[]> countEachBloodGroupType();
 
     @Query(value = "select * from patient", nativeQuery = true)
-    public List<Patient> findAllPatient(); // example of using RAW sql query - table name here should be  is same as DB
+     List<Patient> findAllPatient(); // example of using RAW sql query - table name here should be same as DB
+
+    @Transactional // adding this because of testing . No need in this flow => controller--->service--->repository
+    @Modifying // we have to mention this here for queries which will update the DB
+    @Query("UPDATE Patient p set p.firstName = :firstName where p.id = :id")
+    int updateFirstNameWithId(@Param("firstName") String firstName, @Param("id") Long id);
 }

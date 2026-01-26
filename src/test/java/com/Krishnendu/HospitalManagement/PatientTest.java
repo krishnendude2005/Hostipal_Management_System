@@ -63,4 +63,10 @@ public class PatientTest {
     public void testFindALlPatient() {
         System.out.println(patientRepo.findAllPatient());
     }
+
+    @Test
+    public void testUpdatePatient() {
+        int updated = patientRepo.updateFirstNameWithId("Krishnenduu", 2L);
+        System.out.println(updated);
+    }
 }
