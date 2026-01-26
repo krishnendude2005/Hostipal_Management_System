@@ -53,7 +53,7 @@ public class PatientTest {
 
     @Test
     public void countByBloodGroup() {
-        List<Object[]> countDetails = patientRepo.countByBloodGroupType(BloodGroup.AB_POSITIVE);
+        List<Object[]> countDetails = patientRepo.countEachBloodGroupType();
         for (Object[] row : countDetails) {
             System.out.println(row[0] + " -> " + row[1]);
         }
