@@ -50,4 +50,12 @@ public class PatientTest {
         List<Patient> patientList = patientRepo.findByBirthdateAfterDate(LocalDate.ofEpochDay(2002- 7 -15));
         System.out.println(patientList);
     }
+
+    @Test
+    public void countByBloodGroup() {
+        List<Object[]> countDetails = patientRepo.countByBloodGroupType(BloodGroup.AB_POSITIVE);
+        for (Object[] row : countDetails) {
+            System.out.println(row[0] + " -> " + row[1]);
+        }
+    }
 }
