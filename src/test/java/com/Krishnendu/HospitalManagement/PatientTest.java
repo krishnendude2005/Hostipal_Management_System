@@ -44,4 +44,10 @@ public class PatientTest {
         List<Patient> patients = patientRepo.findByBloodGroup("Male",BloodGroup.AB_POSITIVE);
         System.out.println(patients);
     }
+
+    @Test
+    public void findByBirthDateAfterDate() {
+        List<Patient> patientList = patientRepo.findByBirthdateAfterDate(LocalDate.ofEpochDay(2002- 7 -15));
+        System.out.println(patientList);
+    }
 }
