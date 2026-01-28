@@ -83,4 +83,9 @@ public class PatientTest {
         int updated = patientRepo.updateFirstNameWithId("Krishnenduu", 2L);
         System.out.println(updated);
     }
+
+    @Test
+    public void deletePatient() {
+        patientRepo.deleteById(2L);
+    }
 }
