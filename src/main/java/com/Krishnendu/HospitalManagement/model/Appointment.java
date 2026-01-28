@@ -28,7 +28,7 @@ public class Appointment {
     @JoinColumn(name = "patient_id", nullable = false)
     private Patient patient;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY) // lazy loading to avoid n+1 problem
     @JoinColumn(name = "doctor_id", nullable = false)
     private Doctor doctor;
 }
