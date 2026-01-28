@@ -1,18 +1,17 @@
 package com.Krishnendu.HospitalManagement.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Appointment {
 
     @Id
@@ -20,7 +19,7 @@ public class Appointment {
     private Long id;
 
     @Column(nullable = false)
-    private LocalDate appointmentTime;
+    private LocalDateTime appointmentTime;
 
     @Column(length = 500)
     private String reason;

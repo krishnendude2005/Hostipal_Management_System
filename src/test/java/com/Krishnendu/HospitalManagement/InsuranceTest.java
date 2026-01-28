@@ -24,4 +24,9 @@ public class InsuranceTest {
 
         insuranceService.assignInsuranceToPatient(insurance,2L);
     }
+
+    @Test
+    public void testRemoveInsurance() {
+        insuranceService.removeInsuranceFromPatient(2L);
+    }
 }
